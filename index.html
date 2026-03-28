@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Vehicle Registration </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+}
+
+.container{
+width:500px;
+margin:auto;
+background:white;
+padding:20px;
+margin-top:30px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+h2{
+text-align:center;
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#007bff;
+color:white;
+border:none;
+font-size:16px;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Register Your Vehicle with us </h2>
+
+<form id="jobForm">
+
+<label> Owner Name</label>
+<input type="text" name="name" required>
+
+<label>Vehicle Name</label>
+<input type="text" name="father" required>
+
+<label> Vehicle maker </label>
+<input type="text" name="mother">
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Phone Number</label>
+<input type="text" name="phone" required>
+
+<label> ALT phone </label>
+<input type="text" name="adhar">
+
+<label>Date of   Registration </label>
+<input type="date" name="dob">
+
+<!--<label> Seat Capacity </label>
+
+<select name="qualification">
+<option>10th</option>
+<option>XI</option>
+<option>XII</option>
+<option>BA</option>
+<option>BSC</option>
+<option>BCA</option>
+<option>BCOM</option>
+<option>MA</option>
+<option>MPHIL</option>
+<option>PHD</option>
+</select>
+--->
+<button type="submit">Submit Application</button>
+
+</form>
+
+</div>
+
+<script>
+
+const scriptURL="https://script.google.com/macros/s/AKfycbyTMyosGRCbiOeI6OX1sepijsMkGzCHAASsylLUFWWQlSST4pEde055gER7_M0wbXDV/exec";
+
+const form=document.getElementById("jobForm");
+
+form.addEventListener("submit",e=>{
+
+e.preventDefault();
+
+let formData=new FormData(form);
+
+fetch(scriptURL,{
+method:"POST",
+body:formData
+})
+
+.then(res=>res.text())
+.then(data=>{
+
+alert("Application Submitted Successfully");
+
+form.reset();
+
+})
+.catch(error=>{
+
+alert("Submission Error");
+
+console.log(error);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
